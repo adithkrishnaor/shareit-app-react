@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
+import axios from 'axios'
 
 const Post = () => {
 
@@ -18,7 +19,7 @@ const Post = () => {
 
     const readValue =() => {
         console.log(data)
-        axios.post("http://localhost:8080/add",data).then(
+        axios.post("http://localhost:8080/post",data).then(
             (response) => {
                 console.log(response.data)
                 if (response.data.status=="success") {

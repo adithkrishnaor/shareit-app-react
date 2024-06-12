@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
+import axios from 'axios'
 
 const ViewPost = () => {
-
     const [data,setData] = useState([])
     const fetchdata = () => {
-        axios.get("http://localhost:8080/view")
+        axios.get("http://localhost:8080/viewpost")
         .then(
             (response) => {
                 console.log(response.data)
@@ -30,78 +30,21 @@ const ViewPost = () => {
                             <h3>View Posts</h3>
                         </center>
                         <div className="row g-3">
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                                <div class="card border-primary mb-3">
-                                    <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            {
+                                data.map(
+                                    (value,index) => {
+                                        return <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
+                                        <div class="card border-primary mb-3">
+                                            <img src={value.image} class="card-img-top" alt="..." />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Posted by {value.name}</h5>
+                                                <p class="card-text">{value.caption}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                                <div class="card border-primary mb-3">
-                                    <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                                <div class="card border-primary mb-3">
-                                    <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                                <div class="card border-primary mb-3">
-                                    <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                                <div class="card border-primary mb-3">
-                                    <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                                <div class="card border-primary mb-3">
-                                    <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                                <div class="card border-primary mb-3">
-                                    <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                                <div class="card border-primary mb-3">
-                                    <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
+                                    }
+                                )
+                            }
                         </div>
                     </div>
                 </div>
