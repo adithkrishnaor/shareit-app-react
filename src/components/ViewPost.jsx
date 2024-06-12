@@ -2,6 +2,24 @@ import React from 'react'
 import Navbar from './Navbar'
 
 const ViewPost = () => {
+
+    const [data,setData] = useState([])
+    const fetchdata = () => {
+        axios.get("http://localhost:8080/view")
+        .then(
+            (response) => {
+                console.log(response.data)
+                setData(response.data)
+            }
+        ).catch(
+            (error) => {
+                console.log(error.message)
+                alert(error.message)
+            }
+        )
+    }
+    useEffect( () => {fetchdata()},[])
+
   return (
     <div>
         <Navbar/>
